@@ -1,4 +1,3 @@
-using Code.Gameplay.Camera.Factories;
 using Code.Gameplay.Player.Factories;
 using UnityEngine;
 using Zenject;
@@ -10,14 +9,11 @@ namespace Code.Gameplay
     [SerializeField] private Transform _playerSpawnPoint;
     
     private IPlayerFactory _playerFactory;
-    private ICameraFactory _cameraFactory;
 
     [Inject]
     private void Construct(
-      IPlayerFactory playerFactory, 
-      ICameraFactory cameraFactory)
+      IPlayerFactory playerFactory)
     {
-      _cameraFactory = cameraFactory;
       _playerFactory = playerFactory;
     }
     
@@ -29,7 +25,6 @@ namespace Code.Gameplay
     private void InitializeGameWorld()
     {
       _playerFactory.CreatePlayer(_playerSpawnPoint.position);
-      _cameraFactory.CreateCamera(_playerSpawnPoint.position);
     }
   }
 }

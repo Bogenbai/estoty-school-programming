@@ -1,5 +1,6 @@
-using Code.Gameplay.Camera.Factories;
 using Code.Gameplay.Player.Factories;
+using Code.Gameplay.Projectiles.Factory;
+using Code.Infrastructure.Instantiating;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -8,13 +9,19 @@ namespace Code.Infrastructure.Installers
   {
     public override void InstallBindings()
     {
-      BindPlayerServices();
+      BindInstantiatorSetter();
+      BindGameplayFactories();
     }
 
-    private void BindPlayerServices()
+    private void BindInstantiatorSetter()
+    {
+      Container.BindInterfacesAndSelfTo<InstantiatorSetter>().AsSingle();
+    }
+
+    private void BindGameplayFactories()
     {
       Container.BindInterfacesTo<PlayerFactory>().AsSingle();
-      Container.BindInterfacesTo<CameraFactory>().AsSingle();
+      Container.BindInterfacesTo<ProjectileFactory>().AsSingle();
     }
   }
 }
