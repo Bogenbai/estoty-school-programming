@@ -9,7 +9,8 @@ namespace Code.Gameplay.Lifetime.Components
     private float _currentHealth;
 
     public event Action OnDeath;
-    
+    public bool IsAlive => _currentHealth > 0;
+
     public void Setup(float maxHealth)
     {
       _maxHealth = maxHealth;
@@ -18,12 +19,14 @@ namespace Code.Gameplay.Lifetime.Components
 
     public void TakeDamage(float damage)
     {
+      if (!IsAlive)
+        return;
+      
       _currentHealth -= damage;
       
       if (_currentHealth <= 0)
       {
         OnDeath?.Invoke();
-        Destroy(gameObject);
       }
     }
   }

@@ -1,5 +1,6 @@
 using Code.Gameplay.Inputs.Components;
 using Code.Gameplay.Lifetime.Components;
+using Code.Gameplay.Player.Components;
 using Code.Gameplay.Player.Services;
 using Code.Gameplay.Statistics.Components;
 using UnityEngine;

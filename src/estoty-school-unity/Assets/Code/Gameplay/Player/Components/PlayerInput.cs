@@ -1,11 +1,20 @@
 using System;
+using Code.Gameplay.Inputs.Components;
 using UnityEngine;
 
-namespace Code.Gameplay.Inputs.Components
+namespace Code.Gameplay.Player.Components
 {
   public class PlayerInput : MonoBehaviour, IInput
   {
-    public Vector3 Direction { get; private set; }
+    private Vector3 _direction;
+
+    public Vector3 Direction
+    {
+      get => !IsEnabled ? Vector3.zero : _direction;
+      private set => _direction = value;
+    }
+
+    public bool IsEnabled { get; set; } = true;
     
     public event Action OnAttack;
 

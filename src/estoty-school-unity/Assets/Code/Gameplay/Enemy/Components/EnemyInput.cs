@@ -15,8 +15,16 @@ namespace Code.Gameplay.Enemy.Components
     
     private VisionSight _visionSight;
     private Transform _target;
+    private Vector3 _direction;
 
-    public Vector3 Direction { get; private set; }
+    public Vector3 Direction
+    {
+      get => !IsEnabled ? Vector3.zero : _direction;
+      private set => _direction = value;
+    }
+
+    public bool IsEnabled { get; set; } = true;
+    
     public event Action OnAttack;
 
     private void Awake()

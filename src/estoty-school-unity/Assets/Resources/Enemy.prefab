@@ -303,6 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2473902547058429321}
   - component: {fileID: 1932389239549691615}
+  - component: {fileID: 2770136766390011541}
   - component: {fileID: 1098380350994063043}
   - component: {fileID: 763230282854641486}
   - component: {fileID: 3555855403622004656}
@@ -312,6 +313,7 @@ GameObject:
   - component: {fileID: 2371248593315180359}
   - component: {fileID: 2975665330295397084}
   - component: {fileID: 8315647678768712615}
+  - component: {fileID: 7909736406603015499}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -358,6 +360,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2770136766390011541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759669131420290430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 1932389239549691615}
+  _Transitions: {fileID: 0}
+  _ActionOnDisable: 0
 --- !u!136 &1098380350994063043
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -493,6 +510,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85241474cfc343bcaffc151313fb9165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7909736406603015499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2759669131420290430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ce85a629b94ce6b6fca0c1383d4c97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animancer: {fileID: 2770136766390011541}
+  _idle:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 457c3c9d2739b984c9284b437f21ea6a, type: 3}
+    _NormalizedStartTime: NaN
+  _run:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: 7127da4a5abc12b47a9a29f859fa2a6b, type: 3}
+    _NormalizedStartTime: NaN
+  _death:
+    _FadeDuration: 0.25
+    _Speed: 1
+    _Events:
+      _NormalizedTimes: []
+      _Callbacks: []
+      _Names: []
+    _Clip: {fileID: 7400000, guid: eb6a7e4187641364aa026764fe99b26c, type: 3}
+    _NormalizedStartTime: NaN
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &3098379020146551910
 GameObject:
   m_ObjectHideFlags: 0
