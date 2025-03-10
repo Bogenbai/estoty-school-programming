@@ -5,13 +5,14 @@ namespace Code.Gameplay.Lifetime.Components
 {
   public class Health : MonoBehaviour
   {
-    [SerializeField] private float _maxHealth = 5;
+    private float _maxHealth = 5;
     private float _currentHealth;
 
     public event Action OnDeath;
     
-    public void Awake()
+    public void Setup(float maxHealth)
     {
+      _maxHealth = maxHealth;
       _currentHealth = _maxHealth;
     }
 

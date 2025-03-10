@@ -23,7 +23,9 @@ namespace Code.Gameplay.Player.Factories
       player.Stats.SetStat(StatTypeId.Health, 10);
       player.Stats.SetStat(StatTypeId.Damage, 1);
       player.Stats.SetStat(StatTypeId.MovementSpeed, 6);
-      player.Stats.SetStat(StatTypeId.RotationSpeed, 6);
+      player.Stats.SetStat(StatTypeId.RotationSpeed, 10);
+      
+      player.Health.Setup(player.Stats.GetStat(StatTypeId.Health));
       
       return player;
     }

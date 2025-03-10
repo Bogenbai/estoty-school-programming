@@ -5,15 +5,15 @@ namespace Code.Gameplay.Inputs.Components
 {
   public class PlayerInput : MonoBehaviour, IInput
   {
-    public float Horizontal { get; private set; }
-    public float Vertical { get; private set; }
+    public Vector3 Direction { get; private set; }
     
     public event Action OnAttack;
 
     public void Update()
     {
-      Horizontal = Input.GetAxisRaw("Horizontal");
-      Vertical = Input.GetAxisRaw("Vertical");
+      var horizontal = Input.GetAxisRaw("Horizontal");
+      var vertical = Input.GetAxisRaw("Vertical");
+      Direction = new Vector3(horizontal, 0f, vertical).normalized;
       
       if (Input.GetKeyDown(KeyCode.Space))
         OnAttack?.Invoke();

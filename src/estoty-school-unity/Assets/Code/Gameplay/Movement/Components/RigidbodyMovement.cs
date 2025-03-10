@@ -27,11 +27,9 @@ namespace Code.Gameplay.Movement.Components
 
     public void FixedUpdate()
     {
-      float moveHorizontal = _input.Horizontal;
-      float moveVertical = _input.Vertical;
       float movementSpeed = _stats.GetStat(StatTypeId.MovementSpeed);
       
-      Vector3 motion = new Vector3(moveHorizontal, 0f, moveVertical).normalized * movementSpeed;
+      Vector3 motion = _input.Direction.normalized * movementSpeed;
 
       Move(motion);
       Rotate(motion);
@@ -40,6 +38,7 @@ namespace Code.Gameplay.Movement.Components
     private void Rotate(Vector3 motion)
     {
       float rotationSpeed = _stats.GetStat(StatTypeId.RotationSpeed);
+      motion.y = 0;
       
       if (motion != Vector3.zero)
       {

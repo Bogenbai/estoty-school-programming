@@ -1,11 +1,11 @@
 using System;
+using UnityEngine;
 
 namespace Code.Gameplay.Inputs.Components
 {
   public interface IInput
   {
-    float Horizontal { get; }
-    float Vertical { get; }
+    Vector3 Direction { get; }
     event Action OnAttack;
   }
 }

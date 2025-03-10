@@ -7,5 +7,6 @@ namespace Code.Gameplay.Statistics
     Damage = 2,
     MovementSpeed = 3,
     RotationSpeed = 4,
+    VisionRange = 5,
   }
 }

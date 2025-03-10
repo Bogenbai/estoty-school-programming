@@ -19,8 +19,12 @@ namespace Code.Gameplay.Statistics.Components
       {
         if (statTypeId == StatTypeId.Unknown)
           continue;
-        
-        _stats.Add(statTypeId, 0);
+        else if (statTypeId == StatTypeId.MovementSpeed)
+          _stats.Add(statTypeId, 1);
+        else if (statTypeId == StatTypeId.RotationSpeed)
+          _stats.Add(statTypeId, 10);
+        else
+          _stats.Add(statTypeId, 0);
       }
     }
 
