@@ -8,16 +8,13 @@ namespace Code.Gameplay.Player.Factories
 {
   public class PlayerFactory : IPlayerFactory
   {
-    private readonly IAssetsService _assets;
     private readonly IAssetInstantiateService _instantiate;
     private readonly IConfigsService _configs;
 
     public PlayerFactory(
-      IAssetsService assets, 
       IAssetInstantiateService instantiate,
       IConfigsService configs)
     {
-      _assets = assets;
       _instantiate = instantiate;
       _configs = configs;
     }

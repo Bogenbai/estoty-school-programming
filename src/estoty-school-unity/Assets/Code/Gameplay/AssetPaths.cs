@@ -8,5 +8,6 @@ namespace Code.Gameplay
     public const string EnemyPrefab = "Enemy";
     
     public const string PlayerConfig = "Configs/PlayerConfig";
+    public const string EnemyConfig = "Configs/EnemyConfig";
   }
 }

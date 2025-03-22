@@ -1,30 +1,36 @@
+using Code.Gameplay.Enemy.Configs;
 using Code.Gameplay.Statistics;
 using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.Configs;
 using UnityEngine;
 
 namespace Code.Gameplay.Enemy.Factories
 {
   public class EnemyFactory : IEnemyFactory
   {
-    private readonly IAssetsService _assets;
     private readonly IAssetInstantiateService _instantiate;
+    private readonly IConfigsService _configs;
 
-    public EnemyFactory(IAssetsService assets, IAssetInstantiateService instantiate)
+    public EnemyFactory(
+      IAssetInstantiateService instantiate,
+      IConfigsService configs)
     {
-      _assets = assets;
       _instantiate = instantiate;
+      _configs = configs;
     }
     
     public EnemyActor CreateEnemy(Vector3 at)
     {
-      var prefab = _assets.Load<GameObject>(AssetPaths.EnemyPrefab);
-      var enemy = _instantiate.Instantiate<EnemyActor>(prefab, at);
+      EnemyConfig config = _configs.EnemyConfig;
+
+      EnemyActor prefab = config.Prefab;
+      var enemy = _instantiate.Instantiate<EnemyActor>(prefab.gameObject, at);
       
-      enemy.Stats.SetStat(StatTypeId.Health, 2);
-      enemy.Stats.SetStat(StatTypeId.Damage, 1);
-      enemy.Stats.SetStat(StatTypeId.MovementSpeed, 2);
-      enemy.Stats.SetStat(StatTypeId.RotationSpeed, 10);
-      enemy.Stats.SetStat(StatTypeId.VisionRange, 100);
+      enemy.Stats.SetStat(StatTypeId.Health, config.MaxHealth);
+      enemy.Stats.SetStat(StatTypeId.Damage, config.Damage);
+      enemy.Stats.SetStat(StatTypeId.MovementSpeed, config.MovementSpeed);
+      enemy.Stats.SetStat(StatTypeId.RotationSpeed, config.RotationSpeed);
+      enemy.Stats.SetStat(StatTypeId.VisionRange, config.VisionRange);
       
       enemy.Health.Setup(enemy.Stats.GetStat(StatTypeId.Health));
       
