@@ -6,5 +6,7 @@ namespace Code.Gameplay
     public const string CameraPrefab = "Main Camera";
     public const string ProjectilePrefab = "Projectile";
     public const string EnemyPrefab = "Enemy";
+    
+    public const string PlayerConfig = "Configs/PlayerConfig";
   }
 }

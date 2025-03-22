@@ -1,4 +1,5 @@
 using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.Configs;
 using Code.Infrastructure.Identifiers;
 using Code.Infrastructure.Instantiating;
 using Zenject;
@@ -18,6 +19,8 @@ namespace Code.Infrastructure.Installers
     {
       Container.BindInterfacesTo<AssetsService>().AsSingle();
       Container.BindInterfacesTo<AssetInstantiateService>().AsSingle();
+      
+      Container.BindInterfacesTo<ConfigsService>().AsSingle();
     }
 
     private void BindInstantiationServices()
@@ -26,6 +29,7 @@ namespace Code.Infrastructure.Installers
       Container.BindInterfacesTo<InstantiatorSetter>().AsSingle();
     }
 
+    // todo remove
     private void BindIdentifierServices()
     {
       Container.BindInterfacesTo<IdentifierService>().AsSingle();

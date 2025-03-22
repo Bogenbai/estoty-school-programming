@@ -17,7 +17,7 @@ namespace Code.Gameplay
       _playerFactory = playerFactory;
     }
     
-    private void Awake()
+    private void Start()
     {
       InitializeGameWorld();
     }
