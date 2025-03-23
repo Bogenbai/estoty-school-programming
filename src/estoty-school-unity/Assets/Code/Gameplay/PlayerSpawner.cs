@@ -4,10 +4,8 @@ using Zenject;
 
 namespace Code.Gameplay
 {
-  public class GameRunner : MonoBehaviour
+  public class PlayerSpawner : MonoBehaviour
   {
-    [SerializeField] private Transform _playerSpawnPoint;
-    
     private IPlayerFactory _playerFactory;
 
     [Inject]
@@ -19,12 +17,7 @@ namespace Code.Gameplay
     
     private void Start()
     {
-      InitializeGameWorld();
-    }
-
-    private void InitializeGameWorld()
-    {
-      _playerFactory.CreatePlayer(_playerSpawnPoint.position);
+      _playerFactory.CreatePlayer(transform.position);
     }
   }
 }
