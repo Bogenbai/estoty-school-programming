@@ -3,6 +3,7 @@ using Code.Gameplay.Enemy.Services;
 using Code.Gameplay.Player.Factories;
 using Code.Gameplay.Player.Services;
 using Code.Gameplay.Projectiles.Factory;
+using Code.Gameplay.Vfx.Factories;
 using Code.Infrastructure.Instantiating;
 using Code.Infrastructure.Pooling.Services;
 using Zenject;
@@ -25,6 +26,7 @@ namespace Code.Infrastructure.Installers
       Container.BindInterfacesTo<PlayerFactory>().AsSingle();
       Container.BindInterfacesTo<EnemyFactory>().AsSingle();
       Container.BindInterfacesTo<ProjectileFactory>().AsSingle();
+      Container.BindInterfacesTo<VfxFactory>().AsSingle();
     }
 
     private void BindEnemyServices()
