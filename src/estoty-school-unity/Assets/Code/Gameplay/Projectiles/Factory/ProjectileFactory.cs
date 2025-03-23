@@ -15,7 +15,7 @@ namespace Code.Gameplay.Projectiles.Factory
     
     public ProjectileActor CreateProjectile(Vector3 at, Vector3 direction, float damage, TeamTypeId teamTypeId)
     {
-      var projectile = _pool.Take<ProjectileActor>(AssetPaths.ProjectilePrefab, at, 5, nameof(ProjectileFactory));
+      var projectile = _pool.Take<ProjectileActor>(AssetPaths.ProjectilePrefab, at, nameof(ProjectileFactory));
       
       projectile.Movement.Direction = direction;
       projectile.DamageArea.Setup(damage);

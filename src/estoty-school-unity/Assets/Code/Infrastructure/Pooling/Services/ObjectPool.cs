@@ -8,21 +8,24 @@ namespace Code.Infrastructure.Pooling.Services
     {
         private readonly IAssetsService _assets;
         private readonly IAssetInstantiateService _assetInstantiate;
+        
         private readonly Dictionary<string, List<Poolable>> _pools;
         private readonly Dictionary<string, GameObject> _prefabs;
         private readonly Dictionary<string, Transform> _parents;
+        
         private const int DefaultInitialPoolSize = 5;
 
         public ObjectPool(IAssetsService assets, IAssetInstantiateService assetInstantiate)
         {
             _assets = assets;
             _assetInstantiate = assetInstantiate;
+            
             _pools = new Dictionary<string, List<Poolable>>();
             _prefabs = new Dictionary<string, GameObject>();
             _parents = new Dictionary<string, Transform>();
         }
 
-        public T Take<T>(string assetPath, Vector3 at, int initialPoolSize = DefaultInitialPoolSize, string parentName = null) where T : Component
+        public T Take<T>(string assetPath, Vector3 at, string parentName = null, int initialPoolSize = DefaultInitialPoolSize) where T : Component
         {
             GameObject prefab = LoadPrefab(assetPath);
             string key = GetPoolKey(prefab);
