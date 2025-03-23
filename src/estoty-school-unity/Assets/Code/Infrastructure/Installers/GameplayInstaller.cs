@@ -20,16 +20,11 @@ namespace Code.Infrastructure.Installers
       BindInstantiatorSetter();
     }
 
-    private void BindPools()
-    {
-      Container.BindInterfacesTo<ObjectPool>().AsSingle();
-    }
-
     private void BindGameplayFactories()
     {
       Container.BindInterfacesTo<PlayerFactory>().AsSingle();
-      Container.BindInterfacesTo<ProjectileFactory>().AsSingle();
       Container.BindInterfacesTo<EnemyFactory>().AsSingle();
+      Container.BindInterfacesTo<ProjectileFactory>().AsSingle();
     }
 
     private void BindEnemyServices()
@@ -40,6 +35,11 @@ namespace Code.Infrastructure.Installers
     private void BindPlayerServices()
     {
       Container.BindInterfacesTo<PlayerRegistryService>().AsSingle();
+    }
+    
+    private void BindPools()
+    {
+      Container.BindInterfacesTo<ObjectPool>().AsSingle();
     }
 
     private void BindInstantiatorSetter()
