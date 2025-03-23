@@ -18,3 +18,5 @@ MonoBehaviour:
   MaxHealth: 2
   Damage: 1
   VisionRange: 100
+  AttackRange: 2.3
+  AttackCooldown: 1
