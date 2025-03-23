@@ -39,7 +39,7 @@ namespace Code.Infrastructure.Installers
     
     private void BindPools()
     {
-      Container.BindInterfacesTo<ObjectPool>().AsSingle();
+      Container.BindInterfacesTo<PoolService>().AsSingle();
     }
 
     private void BindInstantiatorSetter()

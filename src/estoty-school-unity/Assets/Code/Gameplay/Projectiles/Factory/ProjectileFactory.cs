@@ -6,16 +6,16 @@ namespace Code.Gameplay.Projectiles.Factory
 {
   public class ProjectileFactory : IProjectileFactory
   {
-    private readonly IObjectPool _pool;
+    private readonly IPoolService _poolService;
 
-    public ProjectileFactory(IObjectPool pool)
+    public ProjectileFactory(IPoolService poolService)
     {
-      _pool = pool;
+      _poolService = poolService;
     }
     
     public ProjectileActor CreateProjectile(Vector3 at, Vector3 direction, float damage, TeamTypeId teamTypeId)
     {
-      var projectile = _pool.Take<ProjectileActor>(AssetPaths.ProjectilePrefab, at, nameof(ProjectileFactory));
+      var projectile = _poolService.Take<ProjectileActor>(AssetPaths.ProjectilePrefab, at, nameof(ProjectileFactory));
       
       projectile.Movement.Direction = direction;
       projectile.DamageArea.Setup(damage);

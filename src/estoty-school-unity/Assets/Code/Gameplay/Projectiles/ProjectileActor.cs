@@ -12,16 +12,16 @@ namespace Code.Gameplay.Projectiles
   [RequireComponent(typeof(Team))]
   public class ProjectileActor : MonoBehaviour
   {
-    private IObjectPool _objectPool;
+    private IPoolService _poolService;
     
     public DamageArea DamageArea { get; private set; }
     public DirectionalMovement Movement { get; private set; }
     public Team Team { get; private set; }
 
     [Inject]
-    private void Construct(IObjectPool objectPool)
+    private void Construct(IPoolService poolService)
     {
-      _objectPool = objectPool;
+      _poolService = poolService;
     }
 
     private void Awake()
@@ -40,7 +40,7 @@ namespace Code.Gameplay.Projectiles
 
     private void HandleDamageAreaTouch()
     {
-      _objectPool.Put(gameObject);
+      _poolService.Put(gameObject);
     }
   }
 }

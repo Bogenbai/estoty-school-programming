@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Infrastructure.Pooling.Services
 {
-    public class ObjectPool : IObjectPool
+    public class PoolService : IPoolService
     {
         private readonly IAssetsService _assets;
         private readonly IAssetInstantiateService _assetInstantiate;
@@ -15,7 +15,7 @@ namespace Code.Infrastructure.Pooling.Services
         
         private const int DefaultInitialPoolSize = 5;
 
-        public ObjectPool(IAssetsService assets, IAssetInstantiateService assetInstantiate)
+        public PoolService(IAssetsService assets, IAssetInstantiateService assetInstantiate)
         {
             _assets = assets;
             _assetInstantiate = assetInstantiate;
