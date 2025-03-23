@@ -13,5 +13,7 @@ namespace Code.Gameplay.Enemy.Configs
 		public float MaxHealth = 2;
 		public float Damage = 1;
 		public float VisionRange = 100;
+		public float AttackRange = 1.6f;
+		public float AttackCooldown = 1;
 	}
 }

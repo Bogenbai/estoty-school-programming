@@ -31,6 +31,8 @@ namespace Code.Gameplay.Enemy.Factories
       enemy.Stats.SetStat(StatTypeId.MovementSpeed, config.MovementSpeed);
       enemy.Stats.SetStat(StatTypeId.RotationSpeed, config.RotationSpeed);
       enemy.Stats.SetStat(StatTypeId.VisionRange, config.VisionRange);
+      enemy.Stats.SetStat(StatTypeId.AttackRange, config.AttackRange);
+      enemy.Stats.SetStat(StatTypeId.AttackCooldown, config.AttackCooldown);
       
       enemy.Health.Setup(enemy.Stats.GetStat(StatTypeId.Health));
       

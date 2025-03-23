@@ -12,5 +12,10 @@ namespace Code.Gameplay.Teams.Components
     {
       _teamTypeId = teamTypeId;
     }
+    
+    public bool IsSameTeam(GameObject other)
+    {
+      return other.TryGetComponent(out Team team) && team.TeamTypeId == TeamTypeId;
+    }
   }
 }

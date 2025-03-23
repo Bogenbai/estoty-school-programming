@@ -6,7 +6,7 @@ namespace Code.Gameplay.Lifetime.Components
   public class Health : MonoBehaviour
   {
     private float _maxHealth = 5;
-    private float _currentHealth;
+    [SerializeField] private float _currentHealth;
 
     public event Action OnDeath;
     public bool IsAlive => _currentHealth > 0;

@@ -1,3 +1,4 @@
+using System;
 using Code.Gameplay.Lifetime.Components;
 using Code.Gameplay.Player.Components;
 using Code.Gameplay.Player.Services;
@@ -38,6 +39,18 @@ namespace Code.Gameplay.Player
       Input = GetComponent<PlayerInput>();
       Stats = GetComponent<Stats>();
       Health = GetComponent<Health>();
+      
+      Health.OnDeath += HandleDeath;
+    }
+
+    private void OnDestroy()
+    {
+      Health.OnDeath -= HandleDeath;
+    }
+
+    private void HandleDeath()
+    {
+      gameObject.SetActive(false);
     }
   }
 }

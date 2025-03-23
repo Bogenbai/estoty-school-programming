@@ -8,5 +8,7 @@ namespace Code.Gameplay.Statistics
     MovementSpeed = 3,
     RotationSpeed = 4,
     VisionRange = 5,
+    AttackRange = 6,
+    AttackCooldown = 7
   }
 }
