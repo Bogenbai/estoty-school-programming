@@ -24,7 +24,7 @@ namespace Code.Infrastructure.AssetManagement
       return instantiated;
     }
 
-    public T Instantiate<T>(GameObject prefab, Vector3 at, Transform parent = null) where T : MonoBehaviour
+    public T Instantiate<T>(GameObject prefab, Vector3 at, Transform parent = null) where T : Component
     {
       var instantiated = _instantiatorProvider.Instantiator.InstantiatePrefabForComponent<T>(prefab, parent);
       instantiated.name = instantiated.name.Replace("(Clone)", string.Empty);
@@ -36,7 +36,7 @@ namespace Code.Infrastructure.AssetManagement
       return instantiated;
     }
 
-    public T Instantiate<T>(GameObject prefab, Vector3 at, Vector3 rotation, Transform parent = null) where T : MonoBehaviour
+    public T Instantiate<T>(GameObject prefab, Vector3 at, Vector3 rotation, Transform parent = null) where T : Component
     {
       var instantiated = Instantiate<T>(prefab, at, parent);
       instantiated.transform.rotation = Quaternion.Euler(rotation);
@@ -56,7 +56,7 @@ namespace Code.Infrastructure.AssetManagement
       return instantiated;
     }
 
-    public T Instantiate<T>(GameObject prefab) where T : MonoBehaviour
+    public T Instantiate<T>(GameObject prefab) where T : Component
     {
       var instantiated = _instantiatorProvider.Instantiator.InstantiatePrefabForComponent<T>(prefab);
       instantiated.name = instantiated.name.Replace("(Clone)", string.Empty);

@@ -1,3 +1,4 @@
+using System;
 using Code.Gameplay.Lifetime.Components;
 using Code.Gameplay.Teams.Components;
 using UnityEngine;
@@ -9,6 +10,9 @@ namespace Code.Gameplay.Combat.Components
   {
     private float _damage;
     private Team _team;
+    
+    public event Action OnTouch;
+    public event Action OnDamageDealt;
 
     private void Awake()
     {
@@ -30,9 +34,10 @@ namespace Code.Gameplay.Combat.Components
       if (other.TryGetComponent(out Health health))
       {
         health.TakeDamage(_damage);
+        OnDamageDealt?.Invoke();
       }
       
-      Destroy(gameObject);
+      OnTouch?.Invoke();
     }
 
     private bool IsSameTeam(Collider other)

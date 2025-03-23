@@ -1,24 +1,21 @@
 using Code.Gameplay.Teams;
-using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.Pooling.Services;
 using UnityEngine;
 
 namespace Code.Gameplay.Projectiles.Factory
 {
   public class ProjectileFactory : IProjectileFactory
   {
-    private readonly IAssetsService _assets;
-    private readonly IAssetInstantiateService _instantiate;
+    private readonly IObjectPool _pool;
 
-    public ProjectileFactory(IAssetsService assets, IAssetInstantiateService instantiate)
+    public ProjectileFactory(IObjectPool pool)
     {
-      _assets = assets;
-      _instantiate = instantiate;
+      _pool = pool;
     }
     
     public ProjectileActor CreateProjectile(Vector3 at, Vector3 direction, float damage, TeamTypeId teamTypeId)
     {
-      var prefab = _assets.Load<GameObject>(AssetPaths.ProjectilePrefab);
-      var projectile = _instantiate.Instantiate<ProjectileActor>(prefab, at);
+      var projectile = _pool.Take<ProjectileActor>(AssetPaths.ProjectilePrefab, at, 5, nameof(ProjectileFactory));
       
       projectile.Movement.Direction = direction;
       projectile.DamageArea.Setup(damage);

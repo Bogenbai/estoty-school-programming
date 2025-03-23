@@ -4,6 +4,7 @@ using Code.Gameplay.Player.Factories;
 using Code.Gameplay.Player.Services;
 using Code.Gameplay.Projectiles.Factory;
 using Code.Infrastructure.Instantiating;
+using Code.Infrastructure.Pooling.Services;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -12,15 +13,16 @@ namespace Code.Infrastructure.Installers
   {
     public override void InstallBindings()
     {
-      BindInstantiatorSetter();
       BindGameplayFactories();
       BindEnemyServices();
       BindPlayerServices();
+      BindPools();
+      BindInstantiatorSetter();
     }
 
-    private void BindInstantiatorSetter()
+    private void BindPools()
     {
-      Container.BindInterfacesAndSelfTo<InstantiatorSetter>().AsSingle();
+      Container.BindInterfacesTo<ObjectPool>().AsSingle();
     }
 
     private void BindGameplayFactories()
@@ -38,6 +40,11 @@ namespace Code.Infrastructure.Installers
     private void BindPlayerServices()
     {
       Container.BindInterfacesTo<PlayerRegistryService>().AsSingle();
+    }
+
+    private void BindInstantiatorSetter()
+    {
+      Container.BindInterfacesAndSelfTo<InstantiatorSetter>().AsSingle();
     }
   }
 }
