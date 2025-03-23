@@ -1,5 +1,6 @@
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Configs;
+using Code.Infrastructure.GameRestarting;
 using Code.Infrastructure.Instantiating;
 using Zenject;
 
@@ -11,6 +12,12 @@ namespace Code.Infrastructure.Installers
     {
       BindAssetsServices();
       BindInstantiationServices();
+      BindGameServices();
+    }
+
+    private void BindGameServices()
+    {
+      Container.BindInterfacesTo<GameRestarter>().AsSingle();
     }
 
     private void BindAssetsServices()
